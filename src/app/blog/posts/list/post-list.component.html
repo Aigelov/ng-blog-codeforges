@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="row mb-3">
+    <div class="col-12">
+      <ng-container *ngIf="(getPostList() | async) as postListItem">
+        <mat-table [dataSource]="postListItem" class="mat-elevation-z8 post-list-table">
+          <!-- ID Column -->
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+          </ng-container>
+
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef> Title </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+          </ng-container>
+
+          <!-- SubTitle Column -->
+          <ng-container matColumnDef="subTitle">
+            <mat-header-cell *matHeaderCellDef> SubTitle </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.subTitle}} </mat-cell>
+          </ng-container>
+
+          <!-- Image Url Column -->
+          <ng-container cdkColumnDef="imageUrl">
+            <mat-header-cell *cdkHeaderCellDef> Image Url </mat-header-cell>
+            <mat-cell *cdkCellDef="let element">
+<!--              <img mat-card-image [src]="element.imageUrl" alt="Photo of a Shiba Inu" width="100%">-->
+              {{element.imageUrl}}
+            </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="action">
+            <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+              <button
+                mat-icon-button
+                aria-label="Delete Post"
+                (click)="deletePost(element); $event.stopPropagation()"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row
+            *matRowDef="let row; columns: displayedColumns;"
+            (click)="editPost(row)"
+          ></mat-row>
+        </mat-table>
+      </ng-container>
+
+      <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mb-3">
+    <div class="col-auto">
+      <button
+        mat-fab
+        matTooltip="Create New Post"
+        color="primary"
+        (click)="createPost()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+
+<!--  <div class="row">-->
+<!--    <div class="col-2" *ngFor="let item of postList | async">-->
+<!--      <mat-card>-->
+<!--        <mat-card-header>-->
+<!--          <mat-card-title>{{item.title}}</mat-card-title>-->
+<!--          <mat-card-subtitle>{{item.subTitle}}</mat-card-subtitle>-->
+<!--        </mat-card-header>-->
+<!--        <img mat-card-image [src]="item.imageUrl" alt="Photo of a Shiba Inu">-->
+<!--        <mat-card-content>-->
+<!--          <p>{{item.content}}</p>-->
+<!--        </mat-card-content>-->
+<!--        <mat-card-actions>-->
+<!--          <button mat-button>LIKE</button>-->
+<!--          <button mat-button>SHARE</button>-->
+<!--        </mat-card-actions>-->
+<!--      </mat-card>-->
+<!--    </div>-->
+<!--  </div>-->
+</div>

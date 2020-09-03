@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
-import { PostService } from './services/post.service';
-import { PostListModule } from './list/post-list.module';
-import { PostResourceService } from './services/post-resource.service';
+import { HttpClientModule } from '@angular/common/http';
+import { PostsModule } from './posts/posts.module';
+import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog.component';
+import { CommonMaterialModule } from '../common/material/common-material.module';
 
 @NgModule({
   imports: [
-    PostListModule
+    HttpClientModule,
+    PostsModule,
+    CommonMaterialModule
   ],
   exports: [
-    PostListModule
+    PostsModule,
   ],
-  declarations: [],
-  providers: [
-    PostService,
-    PostResourceService
+  declarations: [
+    ConfirmationDialogComponent
   ],
+  providers: [],
+  entryComponents: [
+    ConfirmationDialogComponent
+  ]
 })
 
 export class BlogModule {

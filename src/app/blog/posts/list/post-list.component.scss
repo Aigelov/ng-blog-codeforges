@@ -1,0 +1,14 @@
+.post-list-table {
+  ::ng-deep {
+    .mat-column-imageUrl {
+      flex: 0 0 150px;
+    }
+
+    .mat-row {
+      &:hover {
+        background-color: #F4F4F4;
+        cursor: pointer;
+      }
+    }
+  }
+}
