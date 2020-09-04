@@ -3,11 +3,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { PostsModule } from './posts/posts.module';
 import { ConfirmationDialogComponent } from './dialogs/confirmation-dialog.component';
 import { CommonMaterialModule } from '../common/material/common-material.module';
+import { RouterModule } from '@angular/router';
+import { BlogRouting } from './blog-routing';
+import { BlogGuard } from './guards/blog.guard';
 
 @NgModule({
   imports: [
     HttpClientModule,
     PostsModule,
+    RouterModule.forChild(BlogRouting),
     CommonMaterialModule
   ],
   exports: [
@@ -16,7 +20,9 @@ import { CommonMaterialModule } from '../common/material/common-material.module'
   declarations: [
     ConfirmationDialogComponent
   ],
-  providers: [],
+  providers: [
+    BlogGuard
+  ],
   entryComponents: [
     ConfirmationDialogComponent
   ]

@@ -6,6 +6,8 @@ import { BlogModule } from './blog/blog.module';
 import { AppRoutingModule } from './app-routing.route';
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginModule } from './login/login.module';
+import { AuthModule } from './common/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    AuthModule,
     BlogModule,
-    ToolbarModule
+    ToolbarModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
